@@ -1,0 +1,79 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<!-- define angular app -->
+<html ng-app="finderApp">
+<head>
+<!-- SCROLLS -->
+<!-- load bootstrap and fontawesome via CDN -->
+<link rel="stylesheet" type="text/css" href="assets/css/mystyles.css"
+	media="screen" />
+<link rel="stylesheet"
+	href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+<link rel="stylesheet"
+	href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+
+<!-- SPELLS -->
+<!-- load angular and angular route via CDN -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+<script src="app/script.js"></script>
+
+</head>
+<!-- define angular controller -->
+<body ng-controller="mainController as store">
+
+	<!-- HEADER AND NAVBAR -->
+	<header>
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="/">Masjid Finder</a>
+				</div>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
+					<li><a href="#contact"><i class="fa fa-comment"></i>
+							Contact</a></li>
+				</ul>
+			</div>
+
+		</nav>
+	</header>
+
+
+
+	<div class="text-center" id="main">
+		<br> <img src="assets/img/grand_mosque-panorama.jpg" alt="..."
+			class="img-rounded">
+		<p class="lead">Find a Mosque near you in Washington DC</p>
+	</div>
+	<div class="text-center">
+		<input type="text" class="form-control"
+			placeholder="Search Masjid, enter zip code"> <br>
+		<p>
+			<button type="button" onclick="window.location.href='#result'"
+				class="btn btn-primary btn-lg">Search</button>
+			<button type="button" onclick="window.location.href='#'"
+				class="btn btn-default btn-lg">Reset</button>
+		</p>
+	</div>
+	<!-- MAIN CONTENT AND INJECTED VIEWS -->
+	<div class="col-md-9">
+		<!-- angular templating -->
+		<!-- this is where content will be injected -->
+		<br>
+		<div ng-view></div>
+	</div>
+
+	<a href="#copyright"><i class="fa fa-shield"></i>Copyright 2014</a>
+	<!--       <form id="searchbox" action="">
+    		<input id="search" type="text" placeholder="Type here">
+    		<input id="submit" type="submit" value="Search Masjid">
+		</form> -->
+
+
+
+</body>
+</html>

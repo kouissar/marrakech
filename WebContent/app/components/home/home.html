@@ -1,0 +1,8 @@
+<h2>Results</h2>
+<div ng-controller="homeController as home" id="main">
+	<div ng-repeat = "place in home.places" ng-animate=" 'animate' ">
+	<p class="lead">{{place.name | uppercase}}</p>
+	<address>{{place.address}}</address>
+	</div>
+</div>
+
