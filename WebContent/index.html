@@ -33,6 +33,7 @@
 				</div>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="#login"><i class="glyphicon glyphicon-lock"></i> Login</a></li>
 					<li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
 					<li><a href="#contact"><i class="fa fa-comment"></i>
 							Contact</a></li>
@@ -41,7 +42,14 @@
 
 		</nav>
 	</header>
-
+	
+	<!-- MAIN CONTENT AND INJECTED VIEWS -->
+	<div class="col-md-9">
+		<!-- angular templating -->
+		<!-- this is where content will be injected -->
+		<br>
+		<div ng-view></div>
+	</div>
 
 
 	<div class="text-center" id="main">
@@ -59,13 +67,9 @@
 				class="btn btn-default btn-lg">Reset</button>
 		</p>
 	</div>
-	<!-- MAIN CONTENT AND INJECTED VIEWS -->
-	<div class="col-md-9">
-		<!-- angular templating -->
-		<!-- this is where content will be injected -->
-		<br>
-		<div ng-view></div>
-	</div>
+	
+	
+
 
 	<a href="#copyright"><i class="fa fa-shield"></i>Copyright 2014</a>
 	<!--       <form id="searchbox" action="">

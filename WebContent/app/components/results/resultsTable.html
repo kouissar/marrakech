@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+      Search: <input class="form-control"
+			placeholder="Search Masjid, enter zip code" ng-model="query">
+
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+
+      <ul class="places">
+        <li ng-repeat="place in places | filter:query">
+          {{place.name}}
+          <p>{{place.comment}}</p>
+          <p>{{place.code}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
