@@ -1,0 +1,20 @@
+
+<div>
+	<h2 class="fa fa-sun-o"> 7 Days Forecast for {{names.city.name}} DC</h2>
+	<table class="table table-hover">
+		<tr>
+			<th>Date</th>
+			<th>Low</th>
+			<th>High</th>
+			<th>icon</th>
+		</tr>
+		<tr ng-repeat="x in names.list">
+			<td>{{ x.dt | timestampToDate }}</td>
+			<td>{{ x.temp.min | number:0 }}</td>
+			<td>{{ x.temp.max | number:0 }}</td>
+			<td>{{x.weather.icon}}</td>
+
+		</tr>
+	</table>
+
+</div>

@@ -19,6 +19,7 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
 <script src="app/script.js"></script>
+<script src="assets/js/PrayTimes.js"></script>
 
 </head>
 <!-- define angular controller -->
@@ -29,14 +30,14 @@
 		<nav class="navbar navbar-default">
 			<div class="container">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="/">Masjid Finder</a>
+					<a class="navbar-brand" href="/">MuslimDCFinder</a>
 				</div>
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="#"><i class="fa fa-home"></i> Home</a></li>
+					<li><a href="#weather"><i class="fa fa-sun-o"></i> Weather</a></li>
+					<li><a href="#salat"><i class="fa fa-clock-o"></i> Prayer Times</a></li>
 					<li><a href="#login"><i class="glyphicon glyphicon-lock"></i> Login</a></li>
 					<li><a href="#about"><i class="fa fa-shield"></i> About</a></li>
-					<li><a href="#contact"><i class="fa fa-comment"></i>
-							Contact</a></li>
 				</ul>
 			</div>
 
@@ -59,7 +60,7 @@
 	</div>
 	<div class="text-center">
 		<input type="text" class="form-control"
-			placeholder="Search Masjid, enter zip code"> <br>
+			placeholder="Search Masjid, enter zip code" ng-model="zip"> <br>
 		<p>
 			<button type="button" onclick="window.location.href='#result'"
 				class="btn btn-primary btn-lg">Search</button>
@@ -71,11 +72,12 @@
 	
 
 
-	<a href="#copyright"><i class="fa fa-shield"></i>Copyright 2014</a>
+	<a href="#play"><i class="fa fa-shield"></i>Example Http service call</a>
 	<!--       <form id="searchbox" action="">
     		<input id="search" type="text" placeholder="Type here">
     		<input id="submit" type="submit" value="Search Masjid">
 		</form> -->
+
 
 
 
