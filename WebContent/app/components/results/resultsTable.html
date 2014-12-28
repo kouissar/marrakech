@@ -12,9 +12,12 @@
 
       <ul class="places">
         <li ng-repeat="place in places | filter:query">
-          {{place.abr}}
-          <p>{{place.name}}</p>
+          {{place.abr | uppercase}}
+          <p>{{place.name | uppercase}}</p>
+          <address>{{place.address}}</address>
           <p>{{place.phone}}</p>
+          <p>{{place.email}}</p>
+          <p>{{place.website}}</p>
         </li>
       </ul>
 
