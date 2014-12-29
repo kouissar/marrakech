@@ -69,7 +69,9 @@ finderApp.controller(
 				});
 
 finderApp.controller('homeController', function($scope) {
-	$scope.places = masjids
+	$scope.places = masjids;
+	$scope.myForm = {};
+    $scope.myForm.zipcode = "20008";
 });
 
 finderApp.controller('tabController', function() {

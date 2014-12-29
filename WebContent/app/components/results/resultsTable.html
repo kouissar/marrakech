@@ -1,17 +1,18 @@
 <div class="container-fluid">
   <div class="row">
+  <p class="lead">Search results for {{myform.zipcode}}</p>
     <div class="col-md-2">
       <!--Sidebar content-->
 
-      Search: <input class="form-control"
-			placeholder="Search Masjid, enter zip code" ng-model="query">
-
+   <!--    Search: <input class="form-control"
+			placeholder="Refine your search" ng-model="myform.zipcode"> -->
+<br>
     </div>
     <div class="col-md-10">
       <!--Body content-->
 
       <ul class="places">
-        <li ng-repeat="place in places | filter:query">
+        <li ng-repeat="place in places | filter:myform.zipcode">
           {{place.abr | uppercase}}
           <p>{{place.name | uppercase}}</p>
           <address>{{place.address}}</address>
