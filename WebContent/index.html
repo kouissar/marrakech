@@ -62,12 +62,12 @@
 
 
 	<div>
-		<button style="float: right" class="btn btn-default btn-lg"
-			ng-click="addCurrentLocation()">Current location</button>
-		<div>
-			<button style="float: right" class="btn btn-primary btn-lg"
-				ng-click="addAddress()">Search</button>
+		<div style="width: 30%; float: right">
+			<button class="btn btn-primary btn-lg" ng-click="addAddress()">Search</button>
+			<button style="padding-right: .5em;" class="btn btn-default btn-lg"
+				ng-click="addCurrentLocation()">Current location</button>
 		</div>
+
 		<div style="overflow: hidden; padding-right: .5em;">
 			<input style="width: 100%; height: 44px" class="form-control"
 				type="text" placeholder="Zipcode or city name" ng-model="address" />
@@ -76,12 +76,12 @@
 
 	<h2>MuslimDCFinder</h2>
 
-		<div class="map_container">
-			<google-map center="map.center" zoom="map.zoom" draggable="true"
-				options="map.options" control="map.control"> <markers
-				models="map.markers" coords="'self'" options="'options'"
-				isLabel='true'> </markers> </google-map>
-		</div>
+	<div class="map_container">
+		<google-map center="map.center" zoom="map.zoom" draggable="true"
+			options="map.options" control="map.control"> <markers
+			models="map.markers" coords="'self'" options="'options'"
+			isLabel='true'> </markers> </google-map>
+	</div>
 
 	<!-- MAIN CONTENT AND INJECTED VIEWS -->
 	<div class="controls">
