@@ -1,0 +1,54 @@
+/* @CHARSET "UTF-8"; */
+/*       #searchbox
+{
+    background-color: #eaf8fc;
+    background-image: linear-gradient(#fff, #d4e8ec);
+    border-radius: 35px;    
+    border-width: 1px;
+    border-style: solid;
+    border-color: #c4d9df #a4c3ca #83afb7;            
+    width: 500px;
+    height: 35px;
+    padding: 10px;
+    margin: 100px auto 50px;
+    overflow: hidden; Clear floats
+} */
+
+html, body, div.map_container {
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+    font-family: comic Sans MS, verdana, sans-serif;
+    background: #fafafa;
+}
+
+div.map_container {
+    position: relative;
+    float: left;
+    width: 70%;
+    height: 80%
+}
+
+.angular-google-map-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;    
+}
+
+div.controls {
+    float: right;
+    width: 30%;
+}
+
+.markerlabel {
+    font-weight: bold;
+    font-size: 13px;
+    border: 1px solid #333;
+    padding: 2px;
+    background: #fff;
+    color: #333;
+}
+
+

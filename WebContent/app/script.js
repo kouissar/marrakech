@@ -2,7 +2,7 @@
 
 // create the module and name it finderApp
 // also include ngRoute for all our routing needs
-var finderApp = angular.module('finderApp', ['ngRoute']);
+var finderApp = angular.module('finderApp', ['ngRoute','google-maps']);
 
 // Define Routing for app
 finderApp.config([ '$routeProvider', function($routeProvider) {
@@ -18,6 +18,9 @@ finderApp.config([ '$routeProvider', function($routeProvider) {
 	}).when('/home', {
 		templateUrl : 'index.html',
 		controller : 'mainController'
+	}).when('/events', {
+		templateUrl : 'app/components/map/map.html',
+		controller : 'MapCtrl'
 	}).when('/salat', {
 		templateUrl : 'app/components/salat/salat.html',
 		controller : 'salatController'
@@ -28,6 +31,7 @@ finderApp.config([ '$routeProvider', function($routeProvider) {
 		redirectTo : '/'
 	});
 } ]);
+
 
 // create the controller and inject Angular's $scope
 finderApp.controller('mainController', function($scope) {
@@ -150,3 +154,124 @@ var masjids = [ {
 	'email' : 'deputydirector@adamscenter.us',
 	'zipcode' : '20164'
 } ];
+
+
+
+finderApp.factory('MarkerCreatorService', function () {
+
+    var markerId = 0;
+
+    function create(latitude, longitude) {
+        var marker = {
+            options: {
+                animation: 1,
+                labelAnchor: "28 -5",
+                labelClass: 'markerlabel'    
+            },
+            latitude: latitude,
+            longitude: longitude,
+            id: ++markerId          
+        };
+        return marker;        
+    }
+
+    function invokeSuccessCallback(successCallback, marker) {
+        if (typeof successCallback === 'function') {
+            successCallback(marker);
+        }
+    }
+
+    function createByCoords(latitude, longitude, successCallback) {
+        var marker = create(latitude, longitude);
+        invokeSuccessCallback(successCallback, marker);
+    }
+
+    function createByAddress(address, successCallback) {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'address' : address}, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                var firstAddress = results[0];
+                var latitude = firstAddress.geometry.location.lat();
+                var longitude = firstAddress.geometry.location.lng();
+                var marker = create(latitude, longitude);
+                invokeSuccessCallback(successCallback, marker);
+            } else {
+                alert("Unknown address: " + address);
+            }
+        });
+    }
+
+    function createByCurrentLocation(successCallback) {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var marker = create(position.coords.latitude, position.coords.longitude);
+                invokeSuccessCallback(successCallback, marker);
+            });
+        } else {
+            alert('Unable to locate current position');
+        }
+    }
+
+    return {
+        createByCoords: createByCoords,
+        createByAddress: createByAddress,
+        createByCurrentLocation: createByCurrentLocation
+    };
+
+});
+
+finderApp.controller('MapCtrl', ['MarkerCreatorService', '$scope', function (MarkerCreatorService, $scope) {
+	
+//	$scope.places = masjids;
+//	$scope.myForm = {};
+//    $scope.myForm.zipcode = "20008";
+
+        MarkerCreatorService.createByCoords(39, -77, function (marker) {
+            marker.options.labelContent = 'Washington DC';
+            $scope.autentiaMarker = marker;
+        });
+        
+        $scope.address = '';
+
+        $scope.map = {
+            center: {
+                latitude: $scope.autentiaMarker.latitude,
+                longitude: $scope.autentiaMarker.longitude
+            },
+            zoom: 12,
+            markers: [],
+            control: {},
+            options: {
+                scrollwheel: false
+            }
+        };
+
+        $scope.map.markers.push($scope.autentiaMarker);
+
+        $scope.addCurrentLocation = function () {
+            MarkerCreatorService.createByCurrentLocation(function (marker) {
+                marker.options.labelContent = 'You´re here';
+                $scope.map.markers.push(marker);
+                refresh(marker);
+            });
+        };
+        
+        $scope.addAddress = function() {
+            var address = $scope.address;
+            if (address !== '') {
+                MarkerCreatorService.createByAddress(address, function(marker) {
+                    $scope.map.markers.push(marker);
+                    refresh(marker);
+                });
+            }
+        };
+
+        function refresh(marker) {
+            $scope.map.control.refresh({latitude: marker.latitude,
+                longitude: marker.longitude});
+        }
+
+    }]);
+
+
+
