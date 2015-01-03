@@ -5,10 +5,12 @@
 <head>
 <!-- SCROLLS -->
 <!-- load bootstrap and fontawesome via libs or CDN -->
-<link rel="stylesheet" type="text/css" href="assets/css/styles.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="assets/css/styles.css"
+	media="screen" />
 <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" /> -->
-<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+<link rel="stylesheet"
+	href="https://netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
 
 <!-- load angular and angular route via libs or CDN -->
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script> -->
@@ -54,50 +56,41 @@
 	<div class="text-center" id="main">
 		<br> <img src="assets/img/grand_mosque-panorama.jpg" alt="..."
 			class="img-rounded">
-		<p class="lead">Muslim Services, Events, and Masjids Finder for
+		<p class="lead">Muslim Services, Events, and Masjid Finder for
 			Washington DC area</p>
 	</div>
-	<div class="text-center">
-		<input type="text" class="form-control"
-			placeholder="Enter zip code, Masjid Name or keyword..."
-			name="zipcode" ng-model="myform.zipcode"> <br>
-		<p>
-			<button type="button" onclick="window.location.href='#result'"
-				class="btn btn-primary btn-lg">Search For Masjid</button>
-			<button type="button" onclick="window.location.href='#'"
-				class="btn btn-default btn-lg">Reset</button>
-		</p>
+
+
+	<div>
+		<button style="float: right" class="btn btn-default btn-lg"
+			ng-click="addCurrentLocation()">Current location</button>
+		<div>
+			<button style="float: right" class="btn btn-primary btn-lg"
+				ng-click="addAddress()">Search</button>
+		</div>
+		<div style="overflow: hidden; padding-right: .5em;">
+			<input style="width: 100%; height: 44px" class="form-control"
+				type="text" placeholder="Zipcode or city name" ng-model="address" />
+		</div>
 	</div>
-  <h2>Map Location</h2>
-        <div class="map_container" >
-            <google-map center="map.center" zoom="map.zoom" draggable="true" options="map.options" control="map.control">
-                <markers models="map.markers" coords="'self'" options="'options'" isLabel='true'>
-                </markers>
-            </google-map>
-        </div>  
-        <div class="controls">
-            <h3>Current location</h3>
-            <p>
-                <button class="btn btn-default btn-lg" ng-click="addCurrentLocation()">Current location</button>                
-            </p>
-            <h3>Address search</h3>
-            <p>
-                <input class="form-control" type="text" placeholder="Zipcode or city name" ng-model="address" style="width: 210px"/>
-                <button class="btn btn-primary btn-lg" ng-click="addAddress()">Search</button>    
-            </p>
-            <p>
-                <a href="http://kcy.me/1bbra" target="_blank">Source Code</a>
-            </p>
-        </div>
+
+	<h2>MuslimDCFinder</h2>
+
+		<div class="map_container">
+			<google-map center="map.center" zoom="map.zoom" draggable="true"
+				options="map.options" control="map.control"> <markers
+				models="map.markers" coords="'self'" options="'options'"
+				isLabel='true'> </markers> </google-map>
+		</div>
+
 	<!-- MAIN CONTENT AND INJECTED VIEWS -->
-	<div class="col-md-9">
+	<div class="controls">
 		<!-- angular templating -->
 		<!-- this is where content will be injected -->
-		<br>
 		<div ng-view></div>
 	</div>
 
-	<a href="#about"><i class="fa fa-shield"></i>Copyright 2014</a>
+	<!-- 	<a href="#about"><i class="fa fa-shield"></i>Copyright 2014</a> -->
 	<!--       <form id="searchbox" action="">
     		<input id="search" type="text" placeholder="Type here">
     		<input id="submit" type="submit" value="Search Masjid">

@@ -19,8 +19,8 @@ finderApp.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : 'index.html',
 		controller : 'mainController'
 	}).when('/events', {
-		templateUrl : 'app/components/map/map.html',
-		controller : 'MapCtrl'
+		templateUrl : 'app/components/results/resultsTable.html',
+		controller : 'homeController'
 	}).when('/salat', {
 		templateUrl : 'app/components/salat/salat.html',
 		controller : 'salatController'
@@ -74,8 +74,8 @@ finderApp.controller(
 
 finderApp.controller('homeController', function($scope) {
 	$scope.places = masjids;
-	$scope.myForm = {};
-    $scope.myForm.zipcode = "20008";
+	$scope= {};
+//    $scope.myForm.zipcode = "20008";
 });
 
 finderApp.controller('tabController', function() {
