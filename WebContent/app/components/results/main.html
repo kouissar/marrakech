@@ -1,8 +1,9 @@
 
 <div class="col-sm-3">
+	<p class="lead">Matching results for {{address}}</p>
 	<div class="list-group">
 		<a href="#/detail/{{place.id}}" class="list-group-item"
-			ng-repeat="place in places"> {{place.name}} - {{place.address}}</a>
+			ng-repeat="place in places | filter:address "> {{place.name}} </a>
 	</div>
 
 </div>

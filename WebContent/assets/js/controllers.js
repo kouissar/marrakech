@@ -21,8 +21,6 @@ function weatherController($scope, $http) {
 	};
 }
 
-
-
 finderApp.controller('mainController', function($scope) {
 	// create a message to display in our view
 	$scope.message = 'Welcome!';
@@ -67,17 +65,11 @@ finderApp.controller(
 					}
 					html += '</table>';
 					document.getElementById('table').innerHTML = html;
-				});
-
-AppCntl.$inject = ['$scope', '$route'];
-function AppCntl($scope, $route, $location) {
-  $scope.$route = $route;
-}
+});
 
 finderApp.controller('homeController', function($scope, db, $route, $location) {
-	$scope.places = db.getPlaces(0);
-//	$scope.places = masjids;
-//	$scope= {};
+	$scope.places = db.list();
+
 	$scope.currentPlace;
     $scope.setCurrentPlace = function(place) {
         $scope.currentPlace = place;
@@ -96,10 +88,11 @@ finderApp.controller('homeController', function($scope, db, $route, $location) {
 
 });
 
-function detailController($scope, db, $route, $location) {
-	  //$scope.meds = db.getMeds($route.current.params.id);
-	  $scope.pt = db.getPlaces($route.current.params.id);
-	}
+function detailController($scope, db, $route) {
+	$scope.message = "Detail View";
+	var param = $route.current.params.id;
+	$scope.pt = db.get(param);	  
+}
 
 
 finderApp.controller('tabController', function() {
@@ -168,3 +161,12 @@ finderApp.controller('MapCtrl', ['MarkerCreatorService', '$scope', function (Mar
         }
 
     }]);
+
+//events
+function eventController($scope, $http) {
+
+    // create a blank object to hold our form information
+    // $scope will allow this to pass between controller and view
+    $scope.formData = {};
+
+}

@@ -24,7 +24,7 @@ finderApp.service('db', function() {
     	'email' : 'webmaster@isgtown.org',
     	'zipcode' : '20008'
     }, {
-    	'id' : 'ICM',
+    	'id' : 'icm',
     	'name' : 'Islamic Center Of Maryland',
     	'address' : '19411 Woodfield Road, Gaithersburg, MD 20879, USA',
     	'phone' : '(301) 840-9440',
@@ -40,27 +40,22 @@ finderApp.service('db', function() {
     	'email' : 'deputydirector@adamscenter.us',
     	'zipcode' : '20164'
     }];
-
-    return {
-      getPlaces: function(placeid) {
-        if (placeid === 0) {
-          return places;
-        } else {
-          return places[placeid - 1];
+    //return place list
+    this.list = function () {
+        return places;
+    }
+    //return place by id
+    this.get = function (id) {
+        for (i in places) {
+            if (places[i].id == id) {
+                return places[i];
+            }
         }
-      }
-    };
+ 
+    }
+ 
   });
 
-
-
-function eventController($scope, $http) {
-
-    // create a blank object to hold our form information
-    // $scope will allow this to pass between controller and view
-    $scope.formData = {};
-
-}
 
 // Define Routing for the app
 finderApp.config([ '$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
@@ -99,53 +94,6 @@ finderApp.config([ '$routeProvider', '$locationProvider', function($routeProvide
 
 
 
-
-
-
-finderApp.filter('timestampToDate', function() {
-	return function(timestamp) {
-		var date = new Date(timestamp * 1000);
-		var dateObject = date.getFullYear() + '-'
-				+ ('0' + (date.getMonth() + 1)).slice(-2) + '-'
-				+ ('0' + date.getDate()).slice(-2);
-		return dateObject;
-	};
-});
-
-//masjid data
-var masjids = [ {
-	'id' : 'isg',
-	'name' : 'Islamic Society Of Germantown',
-	'address' : '19825 Blunt Rd, Germantown, MD. 20874',
-	'phone' : '301-540-4748',
-	'website' : 'http://isgtown.org',
-	'email' : 'webmaster@isgtown.org',
-	'zipcode' : '20874'
-}, {
-	'id' : 'icw',
-	'name' : 'Islamic Center of Washington DC',
-	'address' : '82551 Massachusetts Avenue N.W, Washington DC 20008, USA',
-	'phone' : '(202) 332-8343',
-	'website' : 'http://theislamiccenter.com/',
-	'email' : 'webmaster@isgtown.org',
-	'zipcode' : '20008'
-}, {
-	'id' : 'ICM',
-	'name' : 'Islamic Center Of Maryland',
-	'address' : '19411 Woodfield Road, Gaithersburg, MD 20879, USA',
-	'phone' : '(301) 840-9440',
-	'website' : 'http://icomd.org',
-	'email' : 'icmadmin@icomd.org',
-	'zipcode' : '20879'
-}, {
-	'id' : 'adams',
-	'name' : 'ADAMS Center',
-	'address' : '46903 Sugarland Road, Sterling, VA 20164, USA',
-	'phone' : '703.433.1325',
-	'website' : 'www.adamscenter.org',
-	'email' : 'deputydirector@adamscenter.us',
-	'zipcode' : '20164'
-} ];
 
 
 
@@ -214,49 +162,3 @@ finderApp.factory('MarkerCreatorService', function () {
 
 
 
-///////////////////
-
-finderApp.factory('dcFactory', function() {
-	var places = [ {
-	'id' : 'isg',
-	'name' : 'Islamic Society Of Germantown',
-	'address' : '19825 Blunt Rd, Germantown, MD. 20874',
-	'phone' : '301-540-4748',
-	'website' : 'http://isgtown.org',
-	'email' : 'webmaster@isgtown.org',
-	'zipcode' : '20874'
-}, {
-	'id' : 'icw',
-	'name' : 'Islamic Center of Washington DC',
-	'address' : '82551 Massachusetts Avenue N.W, Washington DC 20008, USA',
-	'phone' : '(202) 332-8343',
-	'website' : 'http://theislamiccenter.com/',
-	'email' : 'webmaster@isgtown.org',
-	'zipcode' : '20008'
-}, {
-	'id' : 'ICM',
-	'name' : 'Islamic Center Of Maryland',
-	'address' : '19411 Woodfield Road, Gaithersburg, MD 20879, USA',
-	'phone' : '(301) 840-9440',
-	'website' : 'http://icomd.org',
-	'email' : 'icmadmin@icomd.org',
-	'zipcode' : '20879'
-}, {
-	'id' : 'adams',
-	'name' : 'ADAMS Center',
-	'address' : '46903 Sugarland Road, Sterling, VA 20164, USA',
-	'phone' : '703.433.1325',
-	'website' : 'www.adamscenter.org',
-	'email' : 'deputydirector@adamscenter.us',
-	'zipcode' : '20164'
-} ];
-
-	var factory = {};
-	factory.getplaces = function() {
-		return places;
-	};
-	factory.postPlaces = function(places){
-		
-	};
-	return factory;
-});
