@@ -1,4 +1,4 @@
-//--------------------- Copyright Block ----------------------
+ //--------------------- Copyright Block ----------------------
 /* 
 
 PrayTimes.js: Prayer Times Calculator (ver 2.3)

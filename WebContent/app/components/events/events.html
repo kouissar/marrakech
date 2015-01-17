@@ -1,0 +1,28 @@
+<div>
+<!-- FORM -->
+<form>
+  <!-- NAME -->
+  <div id="name-group" class="form-group">
+    <label>Events: submit new event</label>
+    <input type="text" name="title" class="form-control" placeholder="Event title" ng-model="formData.name">
+    <span class="help-block"></span>
+  </div>
+
+  <!-- SUPERHERO NAME -->
+  <div id="superhero-group" class="form-group">
+    <label></label>
+    <input type="text" name="detail" class="form-control" placeholder="Event detail" ng-model="formData.superheroAlias">
+    <span class="help-block"></span>
+  </div>
+
+  <!-- SUBMIT BUTTON -->
+  <button type="submit" class="btn btn-success btn-lg btn-block">
+    <span class="glyphicon glyphicon-flash"></span> Submit!
+  </button>
+</form>
+
+<!-- SHOW DATA FROM INPUTS AS THEY ARE BEING TYPED -->
+<pre>
+    {{ formData }}
+</pre>
+</div>

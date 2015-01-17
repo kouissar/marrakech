@@ -1,29 +1,29 @@
-<div class="container-fluid">
-  <div class="row">
-  <p class="lead"> Search results for {{address}}</p>
-    <div class="col-md-2">
-    
-    
-      <!--Sidebar content-->
+<div>
+	<div>
+		<p class="lead">Search results for {{address}}</p>
+		<div class="col-md-2">
 
-   <!--    Search: <input class="form-control"
+
+			<!--Sidebar content-->
+
+			<!--    Search: <input class="form-control"
 			placeholder="Refine your search" ng-model="myform.zipcode"> -->
-<br>
-    </div>
-    <div class="col-md-5">
-      <!--Body content-->
+			<br>
+		</div>
+		<div class="span4 sidebar-content">
+			<!--Body content-->
 
-      <ul class="places">
-        <li ng-repeat="place in places | filter:address">
-          {{place.abr | uppercase}}
-          <p>{{place.name | uppercase}}</p>
-          <address>{{place.address}}</address>
-          <p>{{place.phone}}</p>
-          <p>{{place.email}}</p>
-          <p>{{place.website}}</p>
-        </li>
-      </ul>
+			<ul class="places">
+				<li ng-repeat="place in places | filter:address"
+					ng-click="setCurrentPlace(place)" href="#/detail/{{place.id}">{{place.id | uppercase}}
+					<p>{{place.name | uppercase}}</p>
+					<address>{{place.address}}</address>
+					<p>{{place.phone}}</p>
+					<p>{{place.email}}</p>
+					<p>{{place.website}}</p>
+				</li>
+			</ul>
 
-    </div>
-  </div>
+		</div>
+	</div>
 </div>
