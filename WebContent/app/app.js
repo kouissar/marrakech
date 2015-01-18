@@ -9,7 +9,7 @@ var finderApp = angular.module('finderApp', ['ngRoute','google-maps', 'ngSanitiz
 finderApp.service('db', function() {
     var places = [{
     	'id' : 'isg',
-    	'name' : 'Islamic Society Of Germantown',
+    	'name' : 'Islamic Society of Germantown',
     	'address' : '19825 Blunt Rd, Germantown, MD. 20874',
     	'phone' : '301-540-4748',
     	'website' : 'http://isgtown.org',
@@ -25,7 +25,7 @@ finderApp.service('db', function() {
     	'zipcode' : '20008'
     }, {
     	'id' : 'icm',
-    	'name' : 'Islamic Center Of Maryland',
+    	'name' : 'Islamic Center of Maryland',
     	'address' : '19411 Woodfield Road, Gaithersburg, MD 20879, USA',
     	'phone' : '(301) 840-9440',
     	'website' : 'http://icomd.org',

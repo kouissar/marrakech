@@ -1,12 +1,11 @@
-<div class="jumbotron">
-<h4>{{message}}</h4>
-  ID: {{pt.id}}
-  <BR/>
-  <h3>{{pt.name}}</h3>
-  <div class="text-danger">
-    {{pt.address}}
-  </div>
+<div class="jumbotron" ng-show="pt">
+	<address>
+		<strong>{{ pt.id | uppercase }}</strong>
+		<p>{{pt.name | uppercase}}</p>
+		<p>{{pt.address}}</p>
+		<p>{{pt.phone}}</p>
+		<p>{{pt.email}}</p>
+		<p>{{pt.website}}</p>
+	</address>
 </div>
-<div class="jumbotron" ng-hide="pt">
-  No details to show
-</div> 
+<div class="jumbotron" ng-hide="pt">No details to show</div>

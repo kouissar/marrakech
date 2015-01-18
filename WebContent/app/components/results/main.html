@@ -1,9 +1,11 @@
-
-<div class="col-sm-3">
-	<p class="lead">Matching results for {{address}}</p>
+<div ng-show="address">
+<p class="lead">Matching results for {{address}}</p>
+<div class="col-sm-5" >
 	<div class="list-group">
 		<a href="#/detail/{{place.id}}" class="list-group-item"
 			ng-repeat="place in places | filter:address "> {{place.name}} </a>
 	</div>
 
 </div>
+</div>
+<div class="container-fluid" ng-hide="address"><h4>No results to show</h4></div>

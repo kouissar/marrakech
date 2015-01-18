@@ -109,7 +109,7 @@ finderApp.controller('tabController', function() {
 
 
 //google map
-finderApp.controller('MapCtrl', ['MarkerCreatorService', '$scope', function (MarkerCreatorService, $scope) {
+finderApp.controller('mapController', ['MarkerCreatorService', '$scope', function (MarkerCreatorService, $scope) {
 	
 //	$scope.places = masjids;
 //	$scope.myForm = {};

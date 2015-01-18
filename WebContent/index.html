@@ -20,7 +20,8 @@
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script> -->
 <script
 	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-sanitize.min.js"></script>
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-sanitize.min.js"></script>
 
 <!-- Main app scripts  -->
 <script src="app/app.js"></script>
@@ -37,7 +38,7 @@
 
 </head>
 <!-- define angular controller -->
-<body ng-controller="MapCtrl">
+<body ng-controller="mapController">
 
 	<!-- HEADER AND NAVBAR -->
 	<header>
@@ -60,7 +61,7 @@
 		</nav>
 	</header>
 
-	<div class="text-center" id="main">
+	<div ng-hide="address" class="text-center" id="main">
 		<br> <img src="assets/img/grand_mosque-panorama.jpg" alt="..."
 			class="img-rounded">
 		<p class="lead">Community Services, Events, and Masjid Finder for
@@ -68,7 +69,7 @@
 	</div>
 
 
- 
+
 
 	<div>
 		<div style="width: 30%; float: right">
@@ -79,12 +80,15 @@
 
 		<div style="overflow: hidden; padding-right: .5em;">
 			<input style="width: 100%; height: 44px" class="form-control"
-				type="text" placeholder="Zipcode or city name" ng-model="address" />
+				type="text" placeholder="Zip code, address, or city name"
+				ng-model="address" />
 		</div>
 	</div>
 
 	<h2>DCFinder</h2>
-	<div  class="map_container">
+	<a href="#places"><i class="fa fa-leaf" ng-show="address"></i> Show
+		results </a>
+	<div class="map_container">
 		<google-map center="map.center" zoom="map.zoom" draggable="true"
 			options="map.options" control="map.control"> <markers
 			models="map.markers" coords="'self'" options="'options'"
