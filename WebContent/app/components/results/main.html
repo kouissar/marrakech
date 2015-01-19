@@ -1,5 +1,6 @@
 <div ng-show="address">
-<p class="lead">Matching results for {{address}}</p>
+<br>
+<p class="lead">Search results for {{address}}</p>
 <div class="col-sm-5" >
 	<div class="list-group">
 		<a href="#/detail/{{place.id}}" class="list-group-item"
@@ -8,4 +9,4 @@
 
 </div>
 </div>
-<div class="container-fluid" ng-hide="address"><h4>No results to show</h4></div>
+<div class="alert alert-dismissable alert-info" ng-hide="address"><br></a><p class="lead">No results to show</p><br></div>

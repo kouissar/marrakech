@@ -1,29 +1,20 @@
-<div>
-<!-- FORM -->
-<form>
-  <!-- NAME -->
-  <div id="name-group" class="form-group">
-    <label>Events: submit new event</label>
-    <input type="text" name="title" class="form-control" placeholder="Event title" ng-model="formData.name">
-    <span class="help-block"></span>
-  </div>
+<div ng-show="address">
+	<br>
+	<p class="lead">Events search results for {{address}}</p>
+	<div class="alert alert-dismissable alert-success">
+		<div class="list-group">
+			<a href="#/detail/{{place.id}}" class="list-group-item"
+				ng-repeat="event in events | filter:address ">
+				<p class="lead">{{event.title}}</p>
+				<p>{{event.summary}}</p>
+				<p>{{event.zipcode}}</p>
+			</a>
+		</div>
 
-  <!-- SUPERHERO NAME -->
-  <div id="superhero-group" class="form-group">
-    <label></label>
-    <input type="text" name="detail" class="form-control" placeholder="Event detail" ng-model="formData.superheroAlias">
-    <span class="help-block"></span>
-  </div>
-
-  <!-- SUBMIT BUTTON -->
-  <button type="submit" class="btn btn-success btn-lg btn-block">
-    <span class="glyphicon glyphicon-flash"></span> Submit!
-  </button>
-</form>
-
-<!-- SHOW DATA FROM INPUTS AS THEY ARE BEING TYPED -->
-<pre>
-    {{ formData }}
-</pre>
+	</div>
 </div>
-
+<div class="alert alert-dismissable alert-info" ng-hide="address">
+	<br>
+	<p class="lead">No results to show</p>
+	<br>
+</div>

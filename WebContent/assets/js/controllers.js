@@ -163,10 +163,7 @@ finderApp.controller('mapController', ['MarkerCreatorService', '$scope', functio
     }]);
 
 //events
-function eventController($scope, $http) {
-
-    // create a blank object to hold our form information
-    // $scope will allow this to pass between controller and view
-    $scope.formData = {};
+function eventController($scope, db) {
+	$scope.events = db.listEvent();
 
 }
